@@ -241,20 +241,13 @@ def build_server(cuda=False):
             "--collect-submodules",
             "tada",
             # Kokoro 82M — lightweight TTS engine using misaki G2P
+            # collect-all is required because transformers introspects .py source
+            # files at runtime (e.g. _can_set_attn_implementation opens the class
+            # file); hidden-import alone only bundles bytecode.
             "--hidden-import",
             "backend.backends.kokoro_backend",
-            "--hidden-import",
+            "--collect-all",
             "kokoro",
-            "--hidden-import",
-            "kokoro.pipeline",
-            "--hidden-import",
-            "kokoro.model",
-            "--hidden-import",
-            "kokoro.istftnet",
-            "--hidden-import",
-            "kokoro.modules",
-            "--hidden-import",
-            "kokoro.custom_stft",
             # misaki ships G2P data files (dictionaries, phoneme tables)
             # that must be bundled for espeak/en/ja/zh G2P to work
             "--collect-all",
