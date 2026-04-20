@@ -15,7 +15,6 @@ run this file serially.
 import os
 import sys
 import threading
-import time
 from pathlib import Path
 
 import pytest
@@ -81,12 +80,13 @@ def test_concurrent_threads_share_offline_window():
     observations: list[bool] = []
     errors: list[Exception] = []
     barrier = threading.Barrier(2)
+    fast_exited = threading.Event()
 
     def slow():
         try:
             with force_offline_if_cached(True, "slow"):
-                barrier.wait()  # sync with fast
-                time.sleep(0.15)  # fast will exit during this sleep
+                barrier.wait(timeout=5)
+                assert fast_exited.wait(timeout=5), "fast thread did not exit"
                 observations.append(_hf_const().HF_HUB_OFFLINE)
         except Exception as exc:  # noqa: BLE001
             errors.append(exc)
@@ -94,9 +94,11 @@ def test_concurrent_threads_share_offline_window():
     def fast():
         try:
             with force_offline_if_cached(True, "fast"):
-                barrier.wait()
+                barrier.wait(timeout=5)
         except Exception as exc:  # noqa: BLE001
             errors.append(exc)
+        finally:
+            fast_exited.set()
 
     t_slow = threading.Thread(target=slow)
     t_fast = threading.Thread(target=fast)
@@ -105,8 +107,10 @@ def test_concurrent_threads_share_offline_window():
     t_slow.join(timeout=5)
     t_fast.join(timeout=5)
 
+    assert not t_slow.is_alive(), "slow thread did not finish"
+    assert not t_fast.is_alive(), "fast thread did not finish"
     assert not errors, errors
-    assert [True] == observations, "slow thread lost offline protection"
+    assert observations == [True], "slow thread lost offline protection"
     assert original == _hf_const().HF_HUB_OFFLINE
 
 
