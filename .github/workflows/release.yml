@@ -50,13 +50,19 @@ jobs:
       # "github runners suck") — not a code issue, a disk-pressure one.
       - name: Free up disk space (ubuntu)
         if: contains(matrix.platform, 'ubuntu') || contains(matrix.platform, 'namespace')
-        uses: jlumbroso/free-disk-space@main
+        # Pinned to v1.3.1 (SHA) — this job runs with contents: write and
+        # handles signing secrets later, so we don't want a floating ref.
+        uses: jlumbroso/free-disk-space@54081f138730dfa15788a46383842cd2f914a1be
         with:
           tool-cache: false
           android: true
           dotnet: true
           haskell: true
-          large-packages: true
+          # large-packages: true would `apt-get remove '^llvm-.*'`, which
+          # cascade-removes reverse deps that won't be pulled back in by the
+          # `llvm-dev` install below. The other flags already free ~20 GB,
+          # enough for the Python + torch + PyInstaller build.
+          large-packages: false
           swap-storage: true
 
       - name: Install dependencies (ubuntu only)
