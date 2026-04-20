@@ -21,8 +21,9 @@ i18n
     },
     fallbackLng: 'en',
     supportedLngs: SUPPORTED_LANGUAGES.map((l) => l.code),
-    nonExplicitSupportedLngs: true,
+    load: 'currentOnly',
     interpolation: { escapeValue: false },
+    react: { useSuspense: false },
     detection: {
       order: ['localStorage', 'navigator'],
       lookupLocalStorage: 'voicebox:lang',

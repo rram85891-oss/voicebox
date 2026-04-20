@@ -10,10 +10,15 @@ import { SUPPORTED_LANGUAGES } from '@/i18n';
 
 export function LanguageSelect() {
   const { i18n } = useTranslation();
-  const current = SUPPORTED_LANGUAGES.find((l) => l.code === i18n.resolvedLanguage)?.code ?? 'en';
+  const current = SUPPORTED_LANGUAGES.find((l) => l.code === i18n.language)?.code ?? 'en';
 
   return (
-    <Select value={current} onValueChange={(value) => i18n.changeLanguage(value)}>
+    <Select
+      value={current}
+      onValueChange={(value) => {
+        void i18n.changeLanguage(value);
+      }}
+    >
       <SelectTrigger className="h-9 w-[180px]">
         <SelectValue />
       </SelectTrigger>
