@@ -37,6 +37,61 @@
       "deleting": "Deleting…"
     }
   },
+  "effects": {
+    "title": "Effects",
+    "newPreset": "New Preset",
+    "noDescription": "No description",
+    "placeholder": "Select a preset or create a new one",
+    "effectCount_one": "{{count}} effect",
+    "effectCount_other": "{{count}} effects",
+    "sections": {
+      "builtin": "Built-in",
+      "custom": "Custom",
+      "new": "New"
+    },
+    "badge": {
+      "builtin": "built-in"
+    },
+    "unsaved": {
+      "title": "Unsaved Preset",
+      "hint": "Configure effects in the panel on the right."
+    },
+    "detail": {
+      "newTitle": "New Preset",
+      "editTitle": "Edit Preset",
+      "savePreset": "Save Preset",
+      "saveAsCustom": "Save as Custom",
+      "saving": "Saving…",
+      "deleting": "Deleting…"
+    },
+    "fields": {
+      "name": "Name",
+      "namePlaceholder": "My preset…",
+      "description": "Description",
+      "descriptionPlaceholder": "Describe what this preset does…"
+    },
+    "preview": {
+      "label": "Preview",
+      "button": "Preview",
+      "processing": "Processing…",
+      "hint": "Preview applies effects to the clean version without saving."
+    },
+    "saveAs": {
+      "title": "Save as Custom Preset",
+      "description": "Create a new custom preset based on the current effects chain.",
+      "suggestedName": "{{name}} (Copy)"
+    },
+    "toast": {
+      "saved": "Preset saved",
+      "createdDescription": "\"{{name}}\" has been created.",
+      "updated": "Preset updated",
+      "deleted": "Preset deleted",
+      "saveFailed": "Failed to save",
+      "deleteFailed": "Failed to delete",
+      "previewFailed": "Preview failed",
+      "nameRequired": "Name required"
+    }
+  },
   "stories": {
     "title": "Stories",
     "newStory": "New Story",

@@ -37,6 +37,61 @@
       "deleting": "删除中…"
     }
   },
+  "effects": {
+    "title": "效果",
+    "newPreset": "新建预设",
+    "noDescription": "无描述",
+    "placeholder": "选择一个预设或创建新的",
+    "effectCount_one": "{{count}} 个效果",
+    "effectCount_other": "{{count}} 个效果",
+    "sections": {
+      "builtin": "内置",
+      "custom": "自定义",
+      "new": "新建"
+    },
+    "badge": {
+      "builtin": "内置"
+    },
+    "unsaved": {
+      "title": "未保存的预设",
+      "hint": "在右侧面板配置效果。"
+    },
+    "detail": {
+      "newTitle": "新建预设",
+      "editTitle": "编辑预设",
+      "savePreset": "保存预设",
+      "saveAsCustom": "另存为自定义",
+      "saving": "保存中…",
+      "deleting": "删除中…"
+    },
+    "fields": {
+      "name": "名称",
+      "namePlaceholder": "我的预设……",
+      "description": "描述",
+      "descriptionPlaceholder": "描述此预设的作用……"
+    },
+    "preview": {
+      "label": "预览",
+      "button": "预览",
+      "processing": "处理中…",
+      "hint": "预览仅将效果应用于干净版本,不会保存。"
+    },
+    "saveAs": {
+      "title": "另存为自定义预设",
+      "description": "基于当前效果链创建一个新的自定义预设。",
+      "suggestedName": "{{name}}(副本)"
+    },
+    "toast": {
+      "saved": "预设已保存",
+      "createdDescription": "\"{{name}}\" 已创建。",
+      "updated": "预设已更新",
+      "deleted": "预设已删除",
+      "saveFailed": "保存失败",
+      "deleteFailed": "删除失败",
+      "previewFailed": "预览失败",
+      "nameRequired": "请输入名称"
+    }
+  },
   "stories": {
     "title": "故事",
     "newStory": "新建故事",
