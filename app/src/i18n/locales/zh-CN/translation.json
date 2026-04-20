@@ -90,6 +90,95 @@
       "deleteFailed": "删除失败",
       "previewFailed": "预览失败",
       "nameRequired": "请输入名称"
+    },
+    "chain": {
+      "loadPreset": "加载预设……",
+      "addEffect": "添加效果……",
+      "clear": "清空",
+      "enable": "启用",
+      "disable": "禁用",
+      "remove": "移除"
+    },
+    "types": {
+      "chorus": {
+        "label": "合唱 / 镶边",
+        "params": {
+          "rate_hz": "LFO 速度(Hz)",
+          "depth": "调制深度",
+          "feedback": "反馈量",
+          "centre_delay_ms": "中心延迟(毫秒)",
+          "mix": "干湿混合"
+        }
+      },
+      "reverb": {
+        "label": "混响",
+        "params": {
+          "room_size": "房间大小",
+          "damping": "高频阻尼",
+          "wet_level": "湿声电平",
+          "dry_level": "干声电平",
+          "width": "立体声宽度"
+        }
+      },
+      "delay": {
+        "label": "延迟",
+        "params": {
+          "delay_seconds": "延迟时间(秒)",
+          "feedback": "反馈量",
+          "mix": "干湿混合"
+        }
+      },
+      "compressor": {
+        "label": "压缩器",
+        "params": {
+          "threshold_db": "阈值(dB)",
+          "ratio": "压缩比",
+          "attack_ms": "起音时间(毫秒)",
+          "release_ms": "释放时间(毫秒)"
+        }
+      },
+      "gain": {
+        "label": "增益",
+        "params": {
+          "gain_db": "增益(dB)"
+        }
+      },
+      "highpass": {
+        "label": "高通滤波器",
+        "params": {
+          "cutoff_frequency_hz": "截止频率(Hz)"
+        }
+      },
+      "lowpass": {
+        "label": "低通滤波器",
+        "params": {
+          "cutoff_frequency_hz": "截止频率(Hz)"
+        }
+      },
+      "pitch_shift": {
+        "label": "音高变换",
+        "params": {
+          "semitones": "半音移动"
+        }
+      }
+    },
+    "builtinPresets": {
+      "Robotic": {
+        "name": "机器人",
+        "description": "金属机器人嗓音(慢速 LFO 加高反馈的镶边效果)"
+      },
+      "Radio": {
+        "name": "收音机",
+        "description": "带通滤波加轻度压缩的 AM 收音机薄嗓音"
+      },
+      "Echo Chamber": {
+        "name": "回声室",
+        "description": "宽广的混响加尾随回声"
+      },
+      "Deep Voice": {
+        "name": "低沉嗓音",
+        "description": "降低音高并增添温暖"
+      }
     }
   },
   "stories": {

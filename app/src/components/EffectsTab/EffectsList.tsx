@@ -124,6 +124,14 @@ function PresetCard({
 }) {
   const { t } = useTranslation();
   const effectCount = preset.effects_chain.length;
+  const name = preset.is_builtin
+    ? t(`effects.builtinPresets.${preset.name}.name`, { defaultValue: preset.name })
+    : preset.name;
+  const description = preset.is_builtin
+    ? t(`effects.builtinPresets.${preset.name}.description`, {
+        defaultValue: preset.description ?? '',
+      })
+    : preset.description;
 
   return (
     <button
@@ -140,7 +148,7 @@ function PresetCard({
         <Wand2
           className={cn('h-4 w-4 shrink-0', isSelected ? 'text-accent' : 'text-muted-foreground')}
         />
-        <span className="text-sm font-medium truncate">{preset.name}</span>
+        <span className="text-sm font-medium truncate">{name}</span>
         {preset.is_builtin && (
           <span className="text-[10px] bg-muted text-muted-foreground px-1.5 py-0.5 rounded-full shrink-0">
             {t('effects.badge.builtin')}
@@ -148,7 +156,7 @@ function PresetCard({
         )}
       </div>
       <p className="text-xs text-muted-foreground mt-1 line-clamp-1 pl-6">
-        {preset.description || t('effects.noDescription')}
+        {description || t('effects.noDescription')}
       </p>
       <div className="flex items-center gap-2 mt-1.5 pl-6">
         <span className="text-[10px] text-muted-foreground">

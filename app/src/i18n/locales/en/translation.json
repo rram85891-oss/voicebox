@@ -90,6 +90,95 @@
       "deleteFailed": "Failed to delete",
       "previewFailed": "Preview failed",
       "nameRequired": "Name required"
+    },
+    "chain": {
+      "loadPreset": "Load preset…",
+      "addEffect": "Add effect…",
+      "clear": "Clear",
+      "enable": "Enable",
+      "disable": "Disable",
+      "remove": "Remove"
+    },
+    "types": {
+      "chorus": {
+        "label": "Chorus / Flanger",
+        "params": {
+          "rate_hz": "LFO speed (Hz)",
+          "depth": "Modulation depth",
+          "feedback": "Feedback amount",
+          "centre_delay_ms": "Centre delay (ms)",
+          "mix": "Wet/dry mix"
+        }
+      },
+      "reverb": {
+        "label": "Reverb",
+        "params": {
+          "room_size": "Room size",
+          "damping": "High frequency damping",
+          "wet_level": "Wet level",
+          "dry_level": "Dry level",
+          "width": "Stereo width"
+        }
+      },
+      "delay": {
+        "label": "Delay",
+        "params": {
+          "delay_seconds": "Delay time (seconds)",
+          "feedback": "Feedback amount",
+          "mix": "Wet/dry mix"
+        }
+      },
+      "compressor": {
+        "label": "Compressor",
+        "params": {
+          "threshold_db": "Threshold (dB)",
+          "ratio": "Compression ratio",
+          "attack_ms": "Attack time (ms)",
+          "release_ms": "Release time (ms)"
+        }
+      },
+      "gain": {
+        "label": "Gain",
+        "params": {
+          "gain_db": "Gain (dB)"
+        }
+      },
+      "highpass": {
+        "label": "High-Pass Filter",
+        "params": {
+          "cutoff_frequency_hz": "Cutoff frequency (Hz)"
+        }
+      },
+      "lowpass": {
+        "label": "Low-Pass Filter",
+        "params": {
+          "cutoff_frequency_hz": "Cutoff frequency (Hz)"
+        }
+      },
+      "pitch_shift": {
+        "label": "Pitch Shift",
+        "params": {
+          "semitones": "Semitones to shift"
+        }
+      }
+    },
+    "builtinPresets": {
+      "Robotic": {
+        "name": "Robotic",
+        "description": "Metallic robotic voice (flanger with slow LFO and high feedback)"
+      },
+      "Radio": {
+        "name": "Radio",
+        "description": "Thin AM-radio voice with band-pass filtering and light compression"
+      },
+      "Echo Chamber": {
+        "name": "Echo Chamber",
+        "description": "Spacious reverb with trailing echo"
+      },
+      "Deep Voice": {
+        "name": "Deep Voice",
+        "description": "Lower pitch with added warmth"
+      }
     }
   },
   "stories": {

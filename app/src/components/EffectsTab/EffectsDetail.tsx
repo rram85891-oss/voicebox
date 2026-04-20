@@ -97,6 +97,18 @@ export function EffectsDetail() {
 
   const isEditing = !!selectedPresetId || isCreatingNew;
   const isBuiltIn = preset?.is_builtin ?? false;
+  const presetName = preset
+    ? preset.is_builtin
+      ? t(`effects.builtinPresets.${preset.name}.name`, { defaultValue: preset.name })
+      : preset.name
+    : '';
+  const presetDescription = preset
+    ? preset.is_builtin
+      ? t(`effects.builtinPresets.${preset.name}.description`, {
+          defaultValue: preset.description ?? '',
+        })
+      : preset.description
+    : '';
 
   async function handlePreview() {
     if (!previewGenId || workingChain.length === 0) return;
@@ -184,7 +196,8 @@ export function EffectsDetail() {
   }
 
   function handleSaveAsNew() {
-    setSaveAsName(t('effects.saveAs.suggestedName', { name }));
+    const sourceName = isBuiltIn ? presetName : name;
+    setSaveAsName(t('effects.saveAs.suggestedName', { name: sourceName }));
     setSaveAsDescription(description);
     setSaveAsDialogOpen(true);
   }
@@ -257,7 +270,7 @@ export function EffectsDetail() {
           {isCreatingNew
             ? t('effects.detail.newTitle')
             : isBuiltIn
-              ? preset?.name
+              ? presetName
               : t('effects.detail.editTitle')}
         </h2>
         <div className="flex items-center gap-2">
@@ -334,8 +347,8 @@ export function EffectsDetail() {
           </div>
         )}
 
-        {isBuiltIn && preset?.description && (
-          <p className="text-sm text-muted-foreground">{preset.description}</p>
+        {isBuiltIn && presetDescription && (
+          <p className="text-sm text-muted-foreground">{presetDescription}</p>
         )}
 
         <EffectsChainEditor value={workingChain} onChange={setWorkingChain} showPresets={false} />
