@@ -255,6 +255,12 @@
       "selectLabel": "{{name}}, {{language}}. Select as voice for generation.",
       "selectLabelSelected": "{{name}}, {{language}}. Selected as voice for generation."
     },
+    "list": {
+      "errorLoading": "Error loading profiles: {{message}}",
+      "empty": "No voice profiles yet. Create your first profile to get started.",
+      "createVoice": "Create Voice",
+      "unsupportedNote": "Only supported voice profiles can be selected for the current model."
+    },
     "deleteDialog": {
       "title": "Delete Profile",
       "body": "Are you sure you want to delete \"{{name}}\"? This action cannot be undone.",
