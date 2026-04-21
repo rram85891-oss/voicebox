@@ -244,7 +244,12 @@ jobs:
           TARGET=$(echo "${{ matrix.args }}" | sed -n 's/.*--target \([a-z0-9_-]*\).*/\1/p')
           DMG_DIR="tauri/src-tauri/target/${TARGET}/release/bundle/dmg"
           shopt -s nullglob
-          for dmg in "${DMG_DIR}"/*.dmg; do
+          dmgs=("${DMG_DIR}"/*.dmg)
+          if [ ${#dmgs[@]} -eq 0 ]; then
+            echo "::error::No DMGs found in ${DMG_DIR} — tauri bundler output path may have changed"
+            exit 1
+          fi
+          for dmg in "${dmgs[@]}"; do
             echo "::group::Notarize $(basename "$dmg")"
             xcrun notarytool submit "$dmg" \
               --key "$KEY_PATH" \
