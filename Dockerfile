@@ -45,7 +45,9 @@ RUN grep -vE '^(torch|torchvision)($|[=<> ])' requirements.txt > requirements-do
       -r requirements-docker.txt \
       pedalboard \
       transformers \
-      accelerate && \
+      accelerate \
+      "kokoro>=0.9.4" \
+      "misaki[en]>=0.9.4" && \
     pip install --no-cache-dir --prefix=/install --no-deps qwen-tts
 
 
