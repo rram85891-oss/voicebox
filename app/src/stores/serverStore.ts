@@ -31,6 +31,24 @@ interface ServerStore {
   setCustomModelsDir: (dir: string | null) => void;
 }
 
+function getDefaultServerUrl(): string {
+  if (typeof window === 'undefined') {
+    return 'http://127.0.0.1:17493';
+  }
+
+  const envServerUrl = import.meta.env?.VITE_SERVER_URL;
+  if (envServerUrl) {
+    return envServerUrl;
+  }
+
+  const { hostname, origin } = window.location;
+  if (hostname === 'localhost' || hostname === '127.0.0.1') {
+    return 'http://127.0.0.1:17493';
+  }
+
+  return origin;
+}
+
 /**
  * Invalidate all React Query caches so stale data from the previous
  * server is not shown. Called when the server URL changes.
@@ -42,7 +60,7 @@ function invalidateAllServerData() {
 export const useServerStore = create<ServerStore>()(
   persist(
     (set, get) => ({
-      serverUrl: 'http://127.0.0.1:17493',
+      serverUrl: getDefaultServerUrl(),
       setServerUrl: (url) => {
         const prev = get().serverUrl;
         set({ serverUrl: url });
