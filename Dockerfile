@@ -33,12 +33,17 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN pip install --no-cache-dir --upgrade pip
 
-COPY backend/requirements.txt .
-RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
-RUN pip install --no-cache-dir --prefix=/install --no-deps chatterbox-tts
-RUN pip install --no-cache-dir --prefix=/install --no-deps hume-tada
-RUN pip install --no-cache-dir --prefix=/install \
-    git+https://github.com/QwenLM/Qwen3-TTS.git
+# Keep the public web image CPU-only. Installing backend/requirements.txt pulls
+# CUDA wheels into the image, which makes free-tier cloud builds impractically
+# large. Model-specific packages can be added later for a paid GPU deployment.
+COPY requirements.txt .
+RUN grep -vE '^(torch|torchvision)($|[=<> ])' requirements.txt > requirements-docker.txt && \
+    pip install --no-cache-dir --prefix=/install \
+      --index-url https://download.pytorch.org/whl/cpu \
+      torch torchvision && \
+    pip install --no-cache-dir --prefix=/install \
+      -r requirements-docker.txt \
+      pedalboard
 
 
 # === Stage 3: Runtime ===
