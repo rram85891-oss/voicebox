@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: voicebox
+    runtime: docker
+    dockerContext: .
+    dockerfilePath: ./Dockerfile
+    plan: free
+    autoDeploy: true
+    healthCheckPath: /health
+    envVars:
+      - key: LOG_LEVEL
+        value: info
+      - key: NUMBA_CACHE_DIR
+        value: /tmp/numba_cache
+      - key: VOICEBOX_MODELS_DIR
+        value: /app/data/models
