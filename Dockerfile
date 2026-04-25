@@ -43,7 +43,10 @@ RUN grep -vE '^(torch|torchvision)($|[=<> ])' requirements.txt > requirements-do
       torch torchvision && \
     pip install --no-cache-dir --prefix=/install \
       -r requirements-docker.txt \
-      pedalboard
+      pedalboard \
+      transformers \
+      accelerate && \
+    pip install --no-cache-dir --prefix=/install --no-deps qwen-tts
 
 
 # === Stage 3: Runtime ===
